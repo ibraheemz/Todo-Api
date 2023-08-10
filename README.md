@@ -6,18 +6,17 @@ This is a simple todo API that allows you to create, read, update, and delete to
 
 To get started, you will need to install the following dependencies:
 
-``` composer install
-
+```
+ composer install
 ```
 Once you have installed the dependencies, you can start the API by running the following command:
 
 ```
 php artisan serve
-
 ```
 The API will be running on port 8000. You can test it by making requests to the following endpoints:
 
-GET /todos
+GET /todos /br
 GET /todos/:id
 POST /todos
 PUT /todos/:id
