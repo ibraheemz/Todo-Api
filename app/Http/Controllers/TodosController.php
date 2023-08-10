@@ -26,7 +26,6 @@ class TodosController extends Controller
     // {
     //     $todo = $todoService->store($storeTodoRequest->validate());
     //     return $todo;
-
     // }
     public function store(Request $request)
     {
