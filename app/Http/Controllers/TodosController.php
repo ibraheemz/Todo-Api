@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-// use App\Http\Requests\StoreTodoRequest;
-// use App\Services\TodoService;
+use App\Http\Requests\StoreTodoRequest;
+use App\Services\TodoService;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 
@@ -22,14 +22,14 @@ class TodosController extends Controller
      */
 
     //using FormRequest    ||  returns too few arguments
-    // public function store(StoreTodoRequest $storeTodoRequest, TodoService $todoService)
-    // {
-    //     $todo = $todoService->store($storeTodoRequest->validate());
-    //     return $todo;
-    // }
-    public function store(Request $request)
+    public function store(StoreTodoRequest $storeTodoRequest)
     {
-        return Todo::create($request->all());
+        $todo = Todo::create([
+            'title' => $storeTodoRequest['title'],
+            'description' => $storeTodoRequest['description'],
+            'checked' => $storeTodoRequest['checked']
+        ]);
+        return $todo;
     }
 
     /**
@@ -43,10 +43,14 @@ class TodosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreTodoRequest $storeTodoRequest, string $id)
     {
         $todo = Todo::find($id);
-        $todo->update($request->all());
+        $todo->update([
+            'title' => $storeTodoRequest['title'],
+            'description' => $storeTodoRequest['description'],
+            'checked' => $storeTodoRequest['checked']
+        ]);
 
         return $todo;
     }
